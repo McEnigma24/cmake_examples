@@ -1,0 +1,8 @@
+#include "math.h"
+
+namespace math {
+int add(int lhs, int rhs) {
+    return lhs + rhs;
+}
+}  // namespace math
+

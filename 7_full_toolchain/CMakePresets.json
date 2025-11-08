@@ -1,0 +1,55 @@
+{
+  "version": 4,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 23,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "ninja-debug",
+      "displayName": "Ninja Debug (native)",
+      "description": "Debug build on the host machine using Ninja.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/native-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "ninja-release",
+      "displayName": "Ninja Release (native)",
+      "inherits": "ninja-debug",
+      "binaryDir": "${sourceDir}/build/native-release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "arm-debug",
+      "displayName": "ARM Debug (cross)",
+      "description": "Cross-compile using the example toolchain file.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/arm-debug",
+      "toolchainFile": "${sourceDir}/toolchains/arm-gcc-toolchain.cmake",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "ninja-debug",
+      "configurePreset": "ninja-debug"
+    },
+    {
+      "name": "ninja-release",
+      "configurePreset": "ninja-release"
+    },
+    {
+      "name": "arm-debug",
+      "configurePreset": "arm-debug"
+    }
+  ]
+}
+
