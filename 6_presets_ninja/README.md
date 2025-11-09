@@ -1,10 +1,10 @@
-# 06 – CMake Presets with Ninja
+# 6 – CMake Presets with Ninja
 
 Highlights modern preset-based workflows:
 
 - `CMakePresets.json` pins the Ninja generator and standard configure/build directories
-- library/executable split keeps helper logic reusable
-- dependencies: `presets_demo` links `helpers` privately; consumers do not see its headers
+- `_src/_inc` populate both a helper library (`presets_ninja_lib`) and the `presets_ninja.exe` target using `aux_source_directory`
+- comments outline how presets remove the need for manual `-G Ninja`
 
 ```sh
 cmake --preset ninja-debug

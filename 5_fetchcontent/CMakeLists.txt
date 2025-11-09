@@ -6,6 +6,8 @@ project(FetchContentExample LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CONST_TARGET_NAME "fetch_content_app")
+
 include(FetchContent)
 
 # Real-world usage would fetch from a remote VCS/URL. For an offline-friendly demo we point to a
@@ -21,9 +23,30 @@ FetchContent_Declare(
 # Populate + add_subdirectory in one step; creates the target defined by the dependency's CMakeLists.
 FetchContent_MakeAvailable(fetched_vendor)
 
-add_executable(app_with_fetch src/main.cpp)
+include_directories(_inc)
 
-# Link against the fetched dependency. Because fetched_vendor exported PUBLIC include directories,
-# the include path is automatically visible to this target.
-target_link_libraries(app_with_fetch PRIVATE fetched_vendor)
+file(GLOB SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/_src/*.cpp")
+
+string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
+add_definitions(-DSOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})
+
+set(ALL_LIBRARIES ${ALL_LIBRARIES} fetched_vendor)
+
+message(WARNING "Building exe with FetchContent dependency")
+
+set(TARGET_NAME "${CONST_TARGET_NAME}.exe")
+add_executable(${TARGET_NAME} ${SOURCES})
+target_link_libraries(${TARGET_NAME} PUBLIC ${ALL_LIBRARIES})
+target_compile_definitions(${TARGET_NAME} PRIVATE LINUX BUILD_EXECUTABLE)
+
+set(_props)
+if(DEFINED COMPILE_FLAGS AND NOT COMPILE_FLAGS STREQUAL "")
+    list(APPEND _props COMPILE_FLAGS "${COMPILE_FLAGS}")
+endif()
+if(DEFINED LINK_FLAGS AND NOT LINK_FLAGS STREQUAL "")
+    list(APPEND _props LINK_FLAGS "${LINK_FLAGS}")
+endif()
+if(_props)
+    set_target_properties(${TARGET_NAME} PROPERTIES ${_props})
+endif()
 

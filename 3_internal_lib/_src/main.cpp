@@ -1,4 +1,5 @@
-#include "math/math.h"
+#include "math.h"
+
 #include <iostream>
 
 int main() {

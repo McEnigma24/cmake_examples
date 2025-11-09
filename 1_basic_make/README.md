@@ -1,4 +1,4 @@
-# 01 – Basic Make Generator
+# 1 – Basic Make Generator
 
 Demonstrates the smallest possible CMake project:
 

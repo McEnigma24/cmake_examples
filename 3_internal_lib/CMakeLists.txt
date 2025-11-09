@@ -6,14 +6,33 @@ project(InternalLibExample LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CONST_TARGET_NAME "internal_lib_app")
+
 # We keep reusable code in libs/math with its own CMakeLists.txt.
 add_subdirectory(libs/math)
 
-add_executable(app_with_math src/main.cpp)
+include_directories(_inc)
 
-# Link our internal library; PRIVATE means the dependency is not re-exposed to consumers.
-target_link_libraries(app_with_math PRIVATE mathlib)
+aux_source_directory(_src SOURCES)
 
-# Because mathlib provides headers in a subdirectory, we inherited include paths via
-# target_include_directories in the library CMakeLists (see libs/math/CMakeLists.txt).
+string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
+add_definitions(-DSOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})
+
+message(WARNING "Building exe with internal mathlib")
+
+set(TARGET_NAME "${CONST_TARGET_NAME}.exe")
+add_executable(${TARGET_NAME} ${SOURCES})
+target_link_libraries(${TARGET_NAME} PRIVATE mathlib)
+target_compile_definitions(${TARGET_NAME} PRIVATE LINUX BUILD_EXECUTABLE)
+
+set(_props)
+if(DEFINED COMPILE_FLAGS AND NOT COMPILE_FLAGS STREQUAL "")
+    list(APPEND _props COMPILE_FLAGS "${COMPILE_FLAGS}")
+endif()
+if(DEFINED LINK_FLAGS AND NOT LINK_FLAGS STREQUAL "")
+    list(APPEND _props LINK_FLAGS "${LINK_FLAGS}")
+endif()
+if(_props)
+    set_target_properties(${TARGET_NAME} PROPERTIES ${_props})
+endif()
 

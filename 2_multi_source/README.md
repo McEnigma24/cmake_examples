@@ -1,10 +1,12 @@
-# 02 – Multiple Sources
+# 2 – Multiple Sources
 
-Extends the basic project with several translation units:
+Extends the basic project with several translation units while following the `_src/_inc` layout:
 
-- `target_sources` keeps `CMakeLists.txt` concise while scaling to more files
-- the executable depends only on private sources; no libraries yet
-- include directories declared with `target_include_directories`
+- `aux_source_directory` automatically collects implementation files from `_src`
+- `include_directories(_inc)` exposes headers so `#include "util.h"` works without verbose paths
+- macros compute `SOURCE_PATH_SIZE` to trim compile-time log output
+
+The executable is emitted as `multi_source.exe`.
 
 ```sh
 ./build.sh

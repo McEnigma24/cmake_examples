@@ -1,11 +1,11 @@
-# 03 – Internal Library Split
+# 3 – Internal Library Split
 
 Key ideas:
 
-- reusable code moved into `libs/math` with its own `CMakeLists.txt`
-- `add_subdirectory` wires the static library into the root project
-- `target_link_libraries(app_with_math PRIVATE mathlib)` documents the dependency relationship  
-  (`PRIVATE` because only this executable needs the math helpers)
+- reusable code moved into `libs/math` using `_src/_inc` and `aux_source_directory`
+- `add_subdirectory(libs/math)` wires the static library into the root project
+- `mathlib` exports its headers via `target_include_directories(... PUBLIC …)` so the app can continue using `#include "math.h"`
+- the app follows the same `_src/_inc` pattern, with `internal_lib_app.exe` linking the library privately
 
 ```sh
 ./build.sh
