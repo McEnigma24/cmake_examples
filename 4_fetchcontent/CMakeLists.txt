@@ -16,7 +16,7 @@ aux_source_directory(_core/_src SOURCES)
 add_subdirectory(_libs/math)
 set(ALL_LIBRARIES ${ALL_LIBRARIES} internal_lib_math)
 
-include(flags.cmake)
+include(C-flags.cmake)
 
 
 

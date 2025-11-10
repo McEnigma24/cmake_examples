@@ -15,7 +15,7 @@ aux_source_directory(_core/_src SOURCES)
 # adding all internal libraries
 add_subdirectory(_libs/math)
 
-include(flags.cmake)
+include(C-flags.cmake)
 
 string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
 add_definitions(-DSOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})

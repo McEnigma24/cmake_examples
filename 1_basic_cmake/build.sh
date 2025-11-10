@@ -12,7 +12,7 @@ rm -rf $BUILD_DIR
 cmake -S . -B "${BUILD_DIR}" -G "Unix Makefiles"
 cmake --build "${BUILD_DIR}" --parallel
 
-# ctest --rerun-failed --output-on-failure
+
 
 # alternative #
 
