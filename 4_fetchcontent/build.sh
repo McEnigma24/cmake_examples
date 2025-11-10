@@ -13,9 +13,3 @@ cmake -S . -B "${BUILD_DIR}" -G "Unix Makefiles"
 cmake --build "${BUILD_DIR}" --parallel
 
 # ctest --rerun-failed --output-on-failure
-
-# alternative #
-
-# [ ! -d $BUILD_DIR ] && mkdir $BUILD_DIR || cd $BUILD_DIR
-# cmake ..
-# make -j $(nproc)

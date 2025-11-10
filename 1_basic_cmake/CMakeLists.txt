@@ -13,6 +13,8 @@ include_directories(_core/_inc)
 aux_source_directory(_core/_src SOURCES)
 
 
+
+
 add_executable(${CONST_TARGET_NAME}.exe      ${SOURCES})
 add_library(${CONST_TARGET_NAME}_st STATIC   ${SOURCES})
 add_library(${CONST_TARGET_NAME}_sh SHARED   ${SOURCES})
