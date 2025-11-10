@@ -6,10 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CONST_TARGET_NAME "app_3")
 
-# adding all includes
 include_directories(_core/_inc)
-
-# adding all sources
 aux_source_directory(_core/_src SOURCES)
 
 # adding all internal libraries

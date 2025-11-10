@@ -12,15 +12,15 @@ BUILD_DIR=${BUILD_DIR:-build}    # if BUILD_DIR is not set as environment variab
 cmake -S . -B "${BUILD_DIR}" -G "Unix Makefiles" -DCTEST_ACTIVE=ON
 cmake --build "${BUILD_DIR}" --parallel
 
-# ctest --test-dir "${BUILD_DIR}"
+ctest --test-dir "${BUILD_DIR}"
 
 
 
 # alternalively #
 
-CTEST_ARGS=""
-CTEST_ARGS="${CTEST_ARGS} --test-dir "${BUILD_DIR}""
-CTEST_ARGS="${CTEST_ARGS} --output-on-failure"
-CTEST_ARGS="${CTEST_ARGS} --rerun-failed"
+# CTEST_ARGS=""
+# CTEST_ARGS="${CTEST_ARGS} --test-dir "${BUILD_DIR}""
+# CTEST_ARGS="${CTEST_ARGS} --output-on-failure"       # print only failed tests
+# CTEST_ARGS="${CTEST_ARGS} --rerun-failed"            # run only those tests that failed in previous run
 
-ctest ${CTEST_ARGS}
+# ctest ${CTEST_ARGS}
