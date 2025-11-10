@@ -4,12 +4,10 @@ set -euo pipefail
 BUILD_DIR=${BUILD_DIR:-build}
 [ -d $BUILD_DIR ] && rm -rf $BUILD_DIR
 
+
+BUILD_PRESET="make-debug-test"
+
 git submodule update --init --recursive
-
-cmake --preset make-release
-cmake --build --preset make-release
-
-# cmake -S . -B "${BUILD_DIR}" -DCTEST_ACTIVE=ON
-# cmake --build "${BUILD_DIR}" --parallel
-
-# ctest --test-dir "${BUILD_DIR}"
+cmake --preset "$BUILD_PRESET"
+cmake --build --preset "$BUILD_PRESET" --parallel
+ctest --test-dir "$BUILD_DIR"
