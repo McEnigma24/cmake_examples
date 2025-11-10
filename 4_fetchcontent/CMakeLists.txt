@@ -26,10 +26,12 @@ FetchContent_Declare(
     json
     GIT_REPOSITORY https://github.com/nlohmann/json.git
     GIT_TAG        master
-    SOURCE_DIR     ${CMAKE_SOURCE_DIR}/external/json
 )
-FetchContent_MakeAvailable(json)
-# FetchContent_Populate(json)
+# FetchContent_Populate(json)      # pobiera
+FetchContent_MakeAvailable(json)   # pobiera i buduje ==> Populate + add_subdirectory
+
+# could be added to FetchContent_Declare clause to specify dir to download to OTHERWISE 
+# SOURCE_DIR     ${CMAKE_SOURCE_DIR}/external/json
 
 # list(APPEND ALL_LIBRARIES nlohmann_json::nlohmann_json)
 set(ALL_LIBRARIES ${ALL_LIBRARIES} nlohmann_json::nlohmann_json)
