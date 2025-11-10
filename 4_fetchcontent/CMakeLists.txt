@@ -27,6 +27,27 @@ FetchContent_Declare(
 # FetchContent_Populate(json)      # pobiera
 FetchContent_MakeAvailable(json)   # pobiera i buduje ==> Populate + add_subdirectory
 
+# if there is no CMakeLists.txt in the repository, we have to compile library manually #
+
+            # include_directories(${ssd1306_SOURCE_DIR})
+
+            # # Dodaj pliki źródłowe ręcznie
+            # file(GLOB SSD1306_SOURCES
+            #     ${ssd1306_SOURCE_DIR}/*.c
+            # )
+            #
+            # lub
+            #
+            # aux_source_directory(${ssd1306_SOURCE_DIR} ssd1306_SOURCES)
+
+            # add_library(ssd1306 STATIC ${SSD1306_SOURCES})
+            # target_include_directories(ssd1306 PUBLIC ${ssd1306_SOURCE_DIR})
+
+            # set(ALL_LIBRARIES ${ALL_LIBRARIES} ssd1306) # dodajemy do glownego EXE
+
+
+
+
 # could be added to FetchContent_Declare clause to specify dir to download to OTHERWISE it will got to internal Cmake /build/_deps/json-*/
 # SOURCE_DIR     ${CMAKE_SOURCE_DIR}/external/json
 
