@@ -26,6 +26,7 @@ FetchContent_Declare(
     json
     GIT_REPOSITORY https://github.com/nlohmann/json.git
     GIT_TAG        master
+    SOURCE_DIR     ${CMAKE_SOURCE_DIR}/external/json
 )
 FetchContent_MakeAvailable(json)
 # FetchContent_Populate(json)
