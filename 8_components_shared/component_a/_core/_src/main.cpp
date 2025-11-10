@@ -1,13 +1,22 @@
-#include <iostream>
+#include <string>
+#include <string_view>
 
-#include "util.h"       // local
-#include "math.h"       // internal lib
-#include "json.hpp"     // external lib
+#include <nlohmann/json.hpp>
+
+#include "shared/config.hpp"
+#include "shared/math.hpp"
+#include "shared/util.hpp"
 
 int main()
 {
-    var(math::add(2, 2));
-    var(nlohmann::json::parse("{\"name\": \"John\", \"age\": 30}").at("name").get<std::string>());
+    constexpr std::string_view component_name = COMPONENT_NAME;
+
+    shared::print_component_banner(component_name);
+
+    var(shared::add(2, 2));
+
+    const auto parsed = nlohmann::json::parse("{\"name\": \"John\", \"age\": 30}");
+    var(parsed.at("name").get<std::string>());
 
     #ifdef MY_MACRO
         std::cout << "MY_MACRO is defined" << std::endl;

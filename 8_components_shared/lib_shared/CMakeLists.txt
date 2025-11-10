@@ -1,18 +1,25 @@
-cmake_minimum_required(VERSION 3.20)
-project(InternalLibExample LANGUAGES CXX)
+add_library(shared_core STATIC)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+target_sources(
+    shared_core
+    PRIVATE
+        src/config.cpp
+        src/math.cpp
+)
 
-set(CONST_TARGET_NAME "app_6")
+target_include_directories(
+    shared_core
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
 
-include_directories(_core/_inc)
-aux_source_directory(_core/_src SOURCES)
+target_link_libraries(
+    shared_core
+    PUBLIC
+        project_warnings
+        nlohmann_json::nlohmann_json
+)
 
-include(C-flags.cmake)
-include(C-libs.cmake)
-include(C-test.cmake)
+target_compile_definitions(shared_core PUBLIC SOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})
 
-add_executable(${CONST_TARGET_NAME} ${SOURCES})
-target_link_libraries(${CONST_TARGET_NAME} PRIVATE ${ALL_LIBRARIES})
-target_compile_definitions(${CONST_TARGET_NAME} PRIVATE MY_MACRO) # dodajemy własne makro
+target_compile_features(shared_core PUBLIC cxx_std_20)

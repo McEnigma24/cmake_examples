@@ -1,18 +1,32 @@
-cmake_minimum_required(VERSION 3.20)
-project(InternalLibExample LANGUAGES CXX)
+set(component_b_target component_b_app)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_executable(
+    ${component_b_target}
+    _core/_src/main.cpp
+)
 
-set(CONST_TARGET_NAME "app_6")
+target_link_libraries(
+    ${component_b_target}
+    PRIVATE
+        shared_core
+)
 
-include_directories(_core/_inc)
-aux_source_directory(_core/_src SOURCES)
+target_compile_definitions(
+    ${component_b_target}
+    PRIVATE
+        MY_MACRO
+        COMPONENT_NAME=\"component_b\"
+)
 
-include(C-flags.cmake)
-include(C-libs.cmake)
-include(C-test.cmake)
+if(ENABLE_COMPONENT_TESTS)
+    add_executable(component_b_tests _test/test.cpp)
+    target_link_libraries(component_b_tests PRIVATE shared_core GTest::gtest_main)
+    target_compile_definitions(
+        component_b_tests
+        PRIVATE
+            COMPONENT_NAME=\"component_b\"
+    )
 
-add_executable(${CONST_TARGET_NAME} ${SOURCES})
-target_link_libraries(${CONST_TARGET_NAME} PRIVATE ${ALL_LIBRARIES})
-target_compile_definitions(${CONST_TARGET_NAME} PRIVATE MY_MACRO) # dodajemy własne makro
+    include(GoogleTest)
+    gtest_discover_tests(component_b_tests)
+endif()

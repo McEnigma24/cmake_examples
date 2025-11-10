@@ -1,12 +1,27 @@
 // clang-format off
 #include <gtest/gtest.h> // must be first
 // clang-format on
-#include "util.h"       // local
-#include "math.h"       // internal lib
-#include "json.hpp"     // external lib
+#include <tuple>
+#include <vector>
+
+#include <nlohmann/json.hpp>
+
+#include "shared/math.hpp"
+#include "shared/util.hpp"
 
 // 1) Prosty test niezależny
 TEST(SampleTest, Sanity_2) { EXPECT_EQ(1, 1); }
+
+TEST(MathTest, AdditionIsShared)
+{
+    EXPECT_EQ(shared::add(4, 7), 11);
+}
+
+TEST(JsonTest, ParsesPayload)
+{
+    const auto parsed = nlohmann::json::parse("{\"enabled\": true}");
+    EXPECT_TRUE(parsed.at("enabled").get<bool>());
+}
 
 // 2) TEST_F – testy oparte na fixtures
 class MyFixture : public ::testing::Test
