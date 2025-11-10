@@ -30,7 +30,7 @@ FetchContent_Declare(
 # FetchContent_Populate(json)      # pobiera
 FetchContent_MakeAvailable(json)   # pobiera i buduje ==> Populate + add_subdirectory
 
-# could be added to FetchContent_Declare clause to specify dir to download to OTHERWISE 
+# could be added to FetchContent_Declare clause to specify dir to download to OTHERWISE it will got to internal Cmake /build/_deps/json-*/
 # SOURCE_DIR     ${CMAKE_SOURCE_DIR}/external/json
 
 # list(APPEND ALL_LIBRARIES nlohmann_json::nlohmann_json)

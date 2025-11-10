@@ -2,7 +2,7 @@
 set -euo pipefail
 
 BUILD_DIR=${BUILD_DIR:-build}    # if BUILD_DIR is not set as environment variable, default build directory is "build"
-rm -rf $BUILD_DIR
+[ -d $BUILD_DIR ] && rm -rf $BUILD_DIR
 
 # -S .                : sets source directory to the current directory
 # -B build            : sets build directory to the build folder (creates if it does not exist)

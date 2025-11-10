@@ -4,7 +4,7 @@ project(InternalLibExample LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CONST_TARGET_NAME "app_4")
+set(CONST_TARGET_NAME "app_5")
 
 # adding all includes
 include_directories(_core/_inc)
