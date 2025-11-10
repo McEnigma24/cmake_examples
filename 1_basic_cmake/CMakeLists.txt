@@ -6,12 +6,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CONST_TARGET_NAME "app_1")
 
-
 set(SOURCES
     _core/_src/main.cpp
 )
-
-
 
 
 add_executable(${CONST_TARGET_NAME}.exe      ${SOURCES})

@@ -11,11 +11,3 @@ rm -rf $BUILD_DIR
 
 cmake -S . -B "${BUILD_DIR}" -G "Unix Makefiles"
 cmake --build "${BUILD_DIR}" --parallel
-
-
-
-# alternative #
-
-# [ ! -d $BUILD_DIR ] && mkdir $BUILD_DIR || cd $BUILD_DIR
-# cmake ..
-# make -j $(nproc)

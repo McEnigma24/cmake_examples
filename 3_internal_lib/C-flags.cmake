@@ -7,3 +7,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -save-temps")   # ASSEMBLY + PREPROCESSE
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -S -fverbose-asm") # ASSEMBLY with comments
 
 # cmake_examples/3_internal_lib_A/build/CMakeFiles/app_3.dir/_core/_src/main.cpp.ii
+
+
+string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
+add_definitions(-DSOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})
