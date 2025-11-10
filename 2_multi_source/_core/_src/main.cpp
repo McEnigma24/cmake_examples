@@ -1,6 +1,6 @@
-#include "util.h"
-
 #include <iostream>
+
+#include "util.h"       // local
 
 int main()
 {

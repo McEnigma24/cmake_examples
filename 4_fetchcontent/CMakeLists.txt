@@ -20,21 +20,19 @@ include(flags.cmake)
 
 
 
-# 2 - json #
+# 1 - json #
 include(FetchContent)
 FetchContent_Declare(
     json
     GIT_REPOSITORY https://github.com/nlohmann/json.git
     GIT_TAG        master
 )
-FetchContent_Populate(json)
+FetchContent_MakeAvailable(json)
+# FetchContent_Populate(json)
 
-# set(ALL_LIBRARIES ${ALL_LIBRARIES} json)
-include_directories(${json_SOURCE_DIR}/include)
-
-# set(ALL_LIBRARIES ${ALL_LIBRARIES} json)
-include_directories(${json_SOURCE_DIR}/include)
-
+# list(APPEND ALL_LIBRARIES nlohmann_json::nlohmann_json)
+set(ALL_LIBRARIES ${ALL_LIBRARIES} nlohmann_json::nlohmann_json)
+include_directories(${json_SOURCE_DIR}/include/nlohmann)
 
 add_executable(${CONST_TARGET_NAME} ${SOURCES})
 target_link_libraries(${CONST_TARGET_NAME} PRIVATE ${ALL_LIBRARIES})
