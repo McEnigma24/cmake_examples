@@ -1,0 +1,21 @@
+# 1 "/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/_libs/math/_core/_src/math.cpp"
+# 1 "/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/build-win-make/_libs/math//"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/_libs/math/_core/_src/math.cpp"
+# 1 "/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/_libs/math/_core/_inc/math.h" 1
+       
+
+typedef int mycustomtype;
+
+namespace math
+{
+    mycustomtype add(mycustomtype lhs, mycustomtype rhs);
+}
+# 2 "/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/_libs/math/_core/_src/math.cpp" 2
+
+namespace math
+{
+    mycustomtype add(mycustomtype lhs, mycustomtype rhs) { return lhs + rhs; }
+
+}

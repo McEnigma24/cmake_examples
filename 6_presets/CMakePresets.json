@@ -7,7 +7,7 @@
   },
   "configurePresets": [
     {
-      "_comment": "The concept is that we set all specifig flags / paths / variables so that we don't have to set them mannualy in scripts",
+      "description": "The concept is that we set all specifig flags / paths / variables so that we don't have to set them mannualy in scripts",
       "name": "base",
       "hidden": true,
       "binaryDir": "${sourceDir}/build/"

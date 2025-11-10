@@ -1,39 +1,77 @@
 {
-  "version": 4,
+  "version": 3,
   "cmakeMinimumRequired": {
     "major": 3,
-    "minor": 23,
+    "minor": 20,
     "patch": 0
   },
   "configurePresets": [
     {
+      "description": "Set wspólne parametry żeby nie podawać ich w skryptach",
+      "name": "base",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/build/"
+    },
+    {
       "name": "ninja-debug",
-      "displayName": "Ninja Debug (native)",
-      "description": "Debug build on the host machine using Ninja.",
+      "inherits": "base",
       "generator": "Ninja",
-      "binaryDir": "${sourceDir}/build/native-debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug"
       }
     },
     {
-      "name": "ninja-release",
-      "displayName": "Ninja Release (native)",
+      "name": "ninja-debug-test",
       "inherits": "ninja-debug",
-      "binaryDir": "${sourceDir}/build/native-release",
+      "cacheVariables": {
+        "CTEST_ACTIVE": "ON"
+      }
+    },
+    {
+      "name": "ninja-release",
+      "inherits": "ninja-debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
       }
     },
     {
-      "name": "arm-debug",
-      "displayName": "ARM Debug (cross)",
-      "description": "Cross-compile using the example toolchain file.",
-      "generator": "Ninja",
-      "binaryDir": "${sourceDir}/build/arm-debug",
-      "toolchainFile": "${sourceDir}/toolchains/arm-gcc-toolchain.cmake",
+      "name": "make-debug",
+      "inherits": "base",
+      "generator": "Unix Makefiles",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "make-debug-test",
+      "inherits": "make-debug",
+      "cacheVariables": {
+        "CTEST_ACTIVE": "ON"
+      }
+    },
+    {
+      "name": "make-release",
+      "inherits": "make-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "ninja-release-win64",
+      "inherits": "ninja-release",
+      "binaryDir": "build-win",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_TOOLCHAIN_FILE": "toolchains/mingw-w64.cmake"
+      }
+    },
+    {
+      "name": "make-release-win64",
+      "inherits": "make-release",
+      "binaryDir": "build-win-make",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_TOOLCHAIN_FILE": "toolchains/mingw-w64.cmake"
       }
     }
   ],
@@ -43,12 +81,32 @@
       "configurePreset": "ninja-debug"
     },
     {
+      "name": "ninja-debug-test",
+      "configurePreset": "ninja-debug-test"
+    },
+    {
       "name": "ninja-release",
       "configurePreset": "ninja-release"
     },
     {
-      "name": "arm-debug",
-      "configurePreset": "arm-debug"
+      "name": "make-debug",
+      "configurePreset": "make-debug"
+    },
+    {
+      "name": "make-debug-test",
+      "configurePreset": "make-debug-test"
+    },
+    {
+      "name": "make-release",
+      "configurePreset": "make-release"
+    },
+    {
+      "name": "ninja-release-win64",
+      "configurePreset": "ninja-release-win64"
+    },
+    {
+      "name": "make-release-win64",
+      "configurePreset": "make-release-win64"
     }
   ]
 }

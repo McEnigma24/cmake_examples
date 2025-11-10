@@ -1,0 +1,8 @@
+/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/build-win-make/CMakeFiles/app_7.dir
+/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/build-win-make/CMakeFiles/edit_cache.dir
+/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/build-win-make/CMakeFiles/rebuild_cache.dir
+/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/build-win-make/_libs/math/CMakeFiles/internal_lib_math.dir
+/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/build-win-make/_libs/math/CMakeFiles/edit_cache.dir
+/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/build-win-make/_libs/math/CMakeFiles/rebuild_cache.dir
+/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/build-win-make/_deps/json-build/CMakeFiles/edit_cache.dir
+/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/build-win-make/_deps/json-build/CMakeFiles/rebuild_cache.dir

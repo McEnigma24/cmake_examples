@@ -1,0 +1,1 @@
+-I/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/_core/_inc -I/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/build-win-make/_deps/json-src/include/nlohmann -I/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/_libs/math/_core/_inc -I/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/build-win-make/_deps/json-src/include
