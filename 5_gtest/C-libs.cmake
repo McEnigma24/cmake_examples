@@ -16,7 +16,3 @@ FetchContent_MakeAvailable(json)   # pobiera i buduje ==> Populate + add_subdire
 
 set(ALL_LIBRARIES ${ALL_LIBRARIES} nlohmann_json::nlohmann_json)
 include_directories(${json_SOURCE_DIR}/include/nlohmann)
-
-add_executable(${CONST_TARGET_NAME} ${SOURCES})
-target_link_libraries(${CONST_TARGET_NAME} PRIVATE ${ALL_LIBRARIES})
-target_compile_definitions(${CONST_TARGET_NAME} PRIVATE MY_MACRO) # dodajemy własne makro
