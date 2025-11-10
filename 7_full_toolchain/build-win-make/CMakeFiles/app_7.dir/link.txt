@@ -1,3 +1,0 @@
-/usr/bin/cmake -E rm -f CMakeFiles/app_7.dir/objects.a
-/usr/bin/x86_64-w64-mingw32-ar qc CMakeFiles/app_7.dir/objects.a @CMakeFiles/app_7.dir/objects1.rsp
-/usr/bin/x86_64-w64-mingw32-g++  -g -Wfatal-errors -Werror=uninitialized -Werror=init-self -Werror=reorder -Wdelete-incomplete -save-temps -O3 -DNDEBUG -Wl,--whole-archive CMakeFiles/app_7.dir/objects.a -Wl,--no-whole-archive -o app_7.exe -Wl,--out-implib,libapp_7.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/app_7.dir/linklibs.rsp

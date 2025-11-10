@@ -1,19 +1,18 @@
 cmake_minimum_required(VERSION 3.20)
+project(InternalLibExample LANGUAGES CXX)
 
-project(SharedLib LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CONST_TARGET_NAME "shared_lib")
+set(CONST_TARGET_NAME "app_6")
 
-include_directories(_inc)
+include_directories(_core/_inc)
+aux_source_directory(_core/_src SOURCES)
 
-aux_source_directory(_src SOURCES)
+include(C-flags.cmake)
+include(C-libs.cmake)
+include(C-test.cmake)
 
-string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
-add_definitions(-DSOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})
-
-add_library(${CONST_TARGET_NAME} STATIC ${SOURCES})
-target_include_directories(${CONST_TARGET_NAME}
-    PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/_inc
-)
-
+add_executable(${CONST_TARGET_NAME} ${SOURCES})
+target_link_libraries(${CONST_TARGET_NAME} PRIVATE ${ALL_LIBRARIES})
+target_compile_definitions(${CONST_TARGET_NAME} PRIVATE MY_MACRO) # dodajemy własne makro
