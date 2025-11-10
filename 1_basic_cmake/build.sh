@@ -6,10 +6,9 @@ BUILD_DIR=${BUILD_DIR:-build}    # if BUILD_DIR is not set as environment variab
 
 # -S .                : sets source directory to the current directory
 # -B build            : sets build directory to the build folder (creates if it does not exist)
-# -G "Unix Makefiles" : forces to use Makefile generator (alternative is Ninja / Visual Studio for WIN / XCode for Mac)
 # --build             : starts the build process
 
-cmake -S . -B "${BUILD_DIR}" -G "Unix Makefiles"
+cmake -S . -B "${BUILD_DIR}"
 cmake --build "${BUILD_DIR}" --parallel
 
 
