@@ -42,11 +42,6 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/build-win-make/_libs/math/cmake_install.cmake")
 endif()
 
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/womackow/cpp_projects/cmake_examples/7_full_toolchain/build-win-make/_deps/json-build/cmake_install.cmake")
-endif()
-
 if(CMAKE_INSTALL_COMPONENT)
   set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
 else()

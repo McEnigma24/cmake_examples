@@ -16,10 +16,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeRCCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeSystem.cmake"
-  "_deps/json-src/CMakeLists.txt"
-  "_deps/json-src/cmake/config.cmake.in"
-  "_deps/json-src/cmake/nlohmann_jsonConfigVersion.cmake.in"
-  "_deps/json-src/cmake/pkg-config.pc.in"
   "../toolchains/mingw-w64.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeCXXInformation.cmake"
@@ -27,7 +23,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.22/Modules/CMakeGenericSystem.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake"
-  "/usr/share/cmake-3.22/Modules/CMakePackageConfigHelpers.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeRCInformation.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake"
   "/usr/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake"
@@ -35,13 +30,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.22/Modules/Compiler/GNU-C.cmake"
   "/usr/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake"
   "/usr/share/cmake-3.22/Modules/Compiler/GNU.cmake"
-  "/usr/share/cmake-3.22/Modules/ExternalProject.cmake"
-  "/usr/share/cmake-3.22/Modules/FetchContent.cmake"
-  "/usr/share/cmake-3.22/Modules/FetchContent/CMakeLists.cmake.in"
-  "/usr/share/cmake-3.22/Modules/FindGit.cmake"
-  "/usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake"
-  "/usr/share/cmake-3.22/Modules/FindPackageMessage.cmake"
-  "/usr/share/cmake-3.22/Modules/GNUInstallDirs.cmake"
   "/usr/share/cmake-3.22/Modules/Platform/Windows-GNU-C-ABI.cmake"
   "/usr/share/cmake-3.22/Modules/Platform/Windows-GNU-C.cmake"
   "/usr/share/cmake-3.22/Modules/Platform/Windows-GNU-CXX-ABI.cmake"
@@ -50,7 +38,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.22/Modules/Platform/Windows-windres.cmake"
   "/usr/share/cmake-3.22/Modules/Platform/Windows.cmake"
   "/usr/share/cmake-3.22/Modules/Platform/WindowsPaths.cmake"
-  "/usr/share/cmake-3.22/Modules/WriteBasicConfigVersionFile.cmake"
   )
 
 # The corresponding makefile is:
@@ -61,13 +48,8 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "_deps/json-subbuild/CMakeLists.txt"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "_libs/math/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "_deps/json-build/nlohmann_json.pc"
-  "_deps/json-build/nlohmann_jsonConfigVersion.cmake"
-  "_deps/json-build/nlohmann_jsonConfig.cmake"
-  "_deps/json-build/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
