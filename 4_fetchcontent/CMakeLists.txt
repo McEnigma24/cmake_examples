@@ -37,32 +37,3 @@ include_directories(${json_SOURCE_DIR}/include/nlohmann)
 add_executable(${CONST_TARGET_NAME} ${SOURCES})
 target_link_libraries(${CONST_TARGET_NAME} PRIVATE ${ALL_LIBRARIES})
 target_compile_definitions(${CONST_TARGET_NAME} PRIVATE MY_MACRO) # dodajemy własne makro
-
-
-
-
-
-
-
-# 1 - googletest #
-
-# include(FetchContent)
-# FetchContent_Declare(
-#     googletest
-#     GIT_REPOSITORY https://github.com/google/googletest.git
-#     GIT_TAG        v1.14.0
-#     )
-# FetchContent_MakeAvailable(googletest)
-
-# Samo włączenie będzie dla następnego przykładu #
-
-# # Włączenie testów
-# enable_testing()
-# # Dodanie testów
-# set(TEST_EXE_NAME "test.texe")
-# add_executable(${TEST_EXE_NAME} ${TEST_SOURCES})
-# target_link_libraries(${TEST_EXE_NAME} PRIVATE gtest_main ${ALL_LIBRARIES})
-
-# # Rejestracja testów
-# include(GoogleTest)
-# gtest_discover_tests(${TEST_EXE_NAME})

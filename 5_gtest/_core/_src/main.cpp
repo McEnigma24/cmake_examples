@@ -1,8 +1,8 @@
 #include <iostream>
 
 #include "util.h"       // local
-#include "math.h"       // internal
-#include "json.hpp"     // external
+#include "math.h"       // internal lib
+#include "json.hpp"     // external lib
 
 int main()
 {

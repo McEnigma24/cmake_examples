@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "util.h"       // local
-#include "math.h"       // internal
+#include "math.h"       // internal lib
 
 int main()
 {

@@ -14,7 +14,6 @@ FetchContent_Declare(
 # FetchContent_Populate(json)      # pobiera
 FetchContent_MakeAvailable(json)   # pobiera i buduje ==> Populate + add_subdirectory
 
-# list(APPEND ALL_LIBRARIES nlohmann_json::nlohmann_json)
 set(ALL_LIBRARIES ${ALL_LIBRARIES} nlohmann_json::nlohmann_json)
 include_directories(${json_SOURCE_DIR}/include/nlohmann)
 
