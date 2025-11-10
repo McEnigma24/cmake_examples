@@ -17,6 +17,16 @@
       }
     },
     {
+      "name": "ninja-debug-tests",
+      "displayName": "Ninja Debug (tests)",
+      "description": "Debug + Ninja z aktywnymi testami.",
+      "inherits": "ninja-debug",
+      "binaryDir": "${sourceDir}/build/ninja-debug-tests",
+      "cacheVariables": {
+        "CTEST_ACTIVE": "ON"
+      }
+    },
+    {
       "name": "ninja-release",
       "displayName": "Ninja Release",
       "description": "Konfiguracja Release z generatorem Ninja.",
@@ -24,6 +34,16 @@
       "binaryDir": "${sourceDir}/build/ninja-release",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "ninja-release-tests",
+      "displayName": "Ninja Release (tests)",
+      "description": "Release + Ninja z aktywnymi testami.",
+      "inherits": "ninja-release",
+      "binaryDir": "${sourceDir}/build/ninja-release-tests",
+      "cacheVariables": {
+        "CTEST_ACTIVE": "ON"
       }
     },
     {
@@ -37,6 +57,16 @@
       }
     },
     {
+      "name": "make-debug-tests",
+      "displayName": "Unix Makefiles Debug (tests)",
+      "description": "Debug + Make z aktywnymi testami.",
+      "inherits": "make-debug",
+      "binaryDir": "${sourceDir}/build/make-debug-tests",
+      "cacheVariables": {
+        "CTEST_ACTIVE": "ON"
+      }
+    },
+    {
       "name": "make-release",
       "displayName": "Unix Makefiles Release",
       "description": "Konfiguracja Release z generatorem Unix Makefiles.",
@@ -44,6 +74,16 @@
       "binaryDir": "${sourceDir}/build/make-release",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "make-release-tests",
+      "displayName": "Unix Makefiles Release (tests)",
+      "description": "Release + Make z aktywnymi testami.",
+      "inherits": "make-release",
+      "binaryDir": "${sourceDir}/build/make-release-tests",
+      "cacheVariables": {
+        "CTEST_ACTIVE": "ON"
       }
     }
   ],
@@ -53,16 +93,32 @@
       "configurePreset": "ninja-debug"
     },
     {
+      "name": "ninja-debug-tests",
+      "configurePreset": "ninja-debug-tests"
+    },
+    {
       "name": "ninja-release",
       "configurePreset": "ninja-release"
+    },
+    {
+      "name": "ninja-release-tests",
+      "configurePreset": "ninja-release-tests"
     },
     {
       "name": "make-debug",
       "configurePreset": "make-debug"
     },
     {
+      "name": "make-debug-tests",
+      "configurePreset": "make-debug-tests"
+    },
+    {
       "name": "make-release",
       "configurePreset": "make-release"
+    },
+    {
+      "name": "make-release-tests",
+      "configurePreset": "make-release-tests"
     }
   ]
 }
