@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-BUILD_DIR=${BUILD_DIR:-build}    # if BUILD_DIR is not set as environment variable, default build directory is "build"
+BUILD_DIR=${BUILD_DIR:-build}
 [ -d $BUILD_DIR ] && rm -rf $BUILD_DIR
 
 git submodule update --init --recursive
