@@ -1,10 +1,13 @@
-# CMake Cheat Sheet (repo `cmake_examples`)
+# CMake Cheat Sheet (`cmake_examples`)
 
-## Konfiguracja bazowa
+https://cppcheatsheet.com/notes/cmake_basic.html  
+https://cppcheatsheet.com/notes/cmake_package.html
 
-- `cmake_minimum_required` i `project` definiują wersję CMake i języki projektu.
-- `set(CMAKE_CXX_STANDARD ...)` + `set(CMAKE_CXX_STANDARD_REQUIRED ON)` wymusza standard C++ na wszystkich targetach.
-- `set(CMAKE_EXPORT_COMPILE_COMMANDS ON)` generuje `compile_commands.json` dla narzędzi typu clangd.
+## Core Configuration
+
+- `cmake_minimum_required` and `project` define the CMake version and project languages.
+- `set(CMAKE_CXX_STANDARD ...)` together with `set(CMAKE_CXX_STANDARD_REQUIRED ON)` enforces a C++ standard globally.
+- `set(CMAKE_EXPORT_COMPILE_COMMANDS ON)` produces `compile_commands.json` for tooling (clangd, clang-tidy, etc.).
 
 ```4:15:1_basic_cmake/CMakeLists.txt
 set(CMAKE_CXX_STANDARD 17)
@@ -20,12 +23,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 ```
 
-## Źródła i targety
+## Sources and Targets
 
-- `aux_source_directory` zbiera pliki `.cpp` z katalogu, a `include_directories` dodaje nagłówki dla starszego stylu.
-- `add_library(... OBJECT ...)` pozwala przechować skompilowane obiekty bez tworzenia archiwum.
-- `target_sources`, `target_include_directories` oraz `target_link_libraries` z zakresami `PUBLIC`/`PRIVATE`/`INTERFACE` kontrolują propagację nagłówków, flag i zależności.
-- `add_subdirectory` włącza moduły/biblioteki wewnętrzne (np. `lib_shared`, `_libs/math`).
+- `aux_source_directory` gathers `.cpp` files from a directory; `include_directories` wires in headers (classic style).
+- `add_library(... OBJECT ...)` stores compiled object files without creating an archive.
+- `target_sources`, `target_include_directories`, and `target_link_libraries` control propagation of headers/flags/dependencies via `PUBLIC`/`PRIVATE`/`INTERFACE` scopes.
+- `add_subdirectory` brings internal modules/libraries (e.g. `lib_shared`, `_libs/math`) into the build.
 
 ```9:34:3_internal_lib/_libs/math/CMakeLists.txt
 aux_source_directory(_core/_src SOURCES)
@@ -44,10 +47,10 @@ target_link_libraries(shared_core PUBLIC project_warnings nlohmann_json::nlohman
 target_compile_features(shared_core PUBLIC cxx_std_20)
 ```
 
-## Flagi i ostrzeżenia
+## Flags and Warnings
 
-- Oddzielne pliki (`C-flags.cmake`) budują zestaw flag; `set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ...")` kumuluje ustawienia.
-- Interfejsowa biblioteka `project_warnings` przechowuje wspólne `target_compile_options`, co pozwala linkować zestaw ostrzeżeń do wielu targetów.
+- Helper files such as `C-flags.cmake` bundle compiler flags; `set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ...")` accumulates them.
+- Interface libraries like `project_warnings` centralize `target_compile_options`, so you can apply a warning profile to multiple targets.
 
 ```1:12:3_internal_lib/C-flags.cmake
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wfatal-errors -Werror=uninitialized -Werror=init-self -Werror=reorder -Wdelete-incomplete")
@@ -70,10 +73,10 @@ target_compile_options(
 )
 ```
 
-## Definicje i makra
+## Definitions and Macros
 
-- `add_definitions` dodaje globalne makra (tu: `SOURCE_PATH_SIZE`), a `target_compile_definitions` dodaje je selektywnie do targetów.
-- Wartości mogą być przekazywane jako `PRIVATE` (tylko lokalnie) lub `PUBLIC` (propagują się do zależnych targetów).
+- `add_definitions` pushes global macros (e.g. `SOURCE_PATH_SIZE`); `target_compile_definitions` scopes them per target.
+- Scope keywords (`PRIVATE`, `PUBLIC`, `INTERFACE`) govern how definitions propagate to dependent targets.
 
 ```52:61:4_fetchcontent/CMakeLists.txt
 add_executable(${CONST_TARGET_NAME} ${SOURCES})
@@ -85,10 +88,10 @@ target_compile_definitions(${CONST_TARGET_NAME} PRIVATE MY_MACRO)
 target_compile_definitions(shared_core PUBLIC SOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})
 ```
 
-## FetchContent i zależności zewnętrzne
+## FetchContent and External Dependencies
 
-- `include(FetchContent)` + `FetchContent_Declare`/`FetchContent_MakeAvailable` pobiera i automatycznie dodaje projekty CMake (np. `nlohmann_json`, `googletest`).
-- Możesz rozszerzać listę bibliotek (np. `ALL_LIBRARIES`) i linkować je do własnych targetów.
+- `include(FetchContent)` plus `FetchContent_Declare` / `FetchContent_MakeAvailable` downloads and wires in CMake-managed dependencies (`nlohmann_json`, `googletest`, etc.).
+- Extend helper variables (such as `ALL_LIBRARIES`) and link them into your executables.
 
 ```21:58:4_fetchcontent/CMakeLists.txt
 include(FetchContent)
@@ -114,11 +117,11 @@ if(ENABLE_COMPONENT_TESTS)
 endif()
 ```
 
-## Testy i CTest
+## Testing and CTest
 
-- `option(CTEST_ACTIVE ...)` pozwala włączać testy przełącznikiem; `list(FILTER ...)` usuwa `main.cpp` z zestawu testowego.
-- `enable_testing`, `include(GoogleTest)` i `gtest_discover_tests` automatyzują rejestrację testów GoogleTest.
-- `set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)` pokazuje, jak modyfikować cache podczas konfiguracji.
+- `option(CTEST_ACTIVE ...)` provides a toggle for tests; `list(FILTER ...)` drops `main.cpp` from the test set.
+- `enable_testing`, `include(GoogleTest)`, and `gtest_discover_tests` automate GoogleTest registration.
+- `set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)` shows how to override cache variables during configuration.
 
 ```22:53:5_gtest/CMakeLists.txt
 option(CTEST_ACTIVE "Testing is active" OFF)
@@ -142,10 +145,10 @@ if(CTEST_ACTIVE)
 endif()
 ```
 
-## Presety (CMakePresets.json)
+## Presets (`CMakePresets.json`)
 
-- Presety upraszczają konfigurację/build (`configurePresets`, `buildPresets`) i dziedziczenie (`inherits`).
-- W cache można nadpisywać flagi (`CMAKE_BUILD_TYPE`, `CTEST_ACTIVE`), a generator wybiera się per preset (`Ninja`, `Unix Makefiles`).
+- Presets streamline configuration/build (`configurePresets`, `buildPresets`) with inheritance via `inherits`.
+- Cache entries override configuration (`CMAKE_BUILD_TYPE`, `CTEST_ACTIVE`), and each preset pins a generator (`Ninja`, `Unix Makefiles`).
 
 ```8:58:6_presets/CMakePresets.json
 "configurePresets": [
@@ -159,10 +162,10 @@ endif()
 ]
 ```
 
-## Toolchain i cross-compilacja
+## Toolchain and Cross-Compilation
 
-- Dedykowany plik toolchain ustawia kompilatory (`find_program` + `set(CMAKE_<LANG>_COMPILER ...)`), suffix binarny i politykę `CMAKE_FIND_ROOT_PATH`.
-- Zmienne środowiskowe (`MINGW_TRIPLET`, `MINGW_PREFIX`) pozwalają dopasować konfigurację bez modyfikacji pliku.
+- A dedicated toolchain file configures compilers (`find_program` + `set(CMAKE_<LANG>_COMPILER ...)`), executable suffixes, and `CMAKE_FIND_ROOT_PATH` policies.
+- Environment variables (`MINGW_TRIPLET`, `MINGW_PREFIX`) let you customize the toolchain without editing the file.
 
 ```1:41:7_toolchain/toolchains/mingw-w64.cmake
 set(CMAKE_SYSTEM_NAME Windows)
@@ -172,10 +175,10 @@ set(CMAKE_C_COMPILER "${MINGW_C_COMPILER}" CACHE FILEPATH "" FORCE)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 ```
 
-## Operacje na listach i łańcuchach
+## List and String Operations
 
-- `string(LENGTH ...)` wylicza długość ścieżki bazowej i udostępnia ją w makrze.
-- `list(FILTER ...)` filtruje listy źródeł/testów.
+- `string(LENGTH ...)` computes the base path length and exposes it through a macro.
+- `list(FILTER ...)` filters source/test collections.
 
 ```12:16:3_internal_lib/C-flags.cmake
 string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
