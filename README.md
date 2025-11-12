@@ -1,12 +1,14 @@
 # CMake Cheat Sheet (`cmake_examples`)
 
 https://cppcheatsheet.com/notes/cmake_basic.html
+
 https://cppcheatsheet.com/notes/cmake_package.html
+
+https://www.youtube.com/watch?v=JnuqMEC7p9E
 
 - TODO -
 add packing & find_package example
 
-https://www.youtube.com/watch?v=JnuqMEC7p9E
 
 
 
@@ -60,7 +62,7 @@ target_compile_features(shared_core PUBLIC cxx_std_20)
 - Interface libraries like `project_warnings` centralize `target_compile_options`, so you can apply a warning profile to multiple targets.
 
 ```1:12:3_internal_lib/C-flags.cmake
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wfatal-errors -Werror=uninitialized -Werror=init-self -Werror=reorder -Wdelete-incomplete")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wfatal-errors -Werror=uninitialized")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -save-temps")
 string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
 add_definitions(-DSOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})
@@ -196,3 +198,4 @@ add_definitions(-DSOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})
 set(TEST_SOURCES ${SOURCES})
 list(FILTER TEST_SOURCES EXCLUDE REGEX "/main\\.cpp$")
 ```
+
