@@ -1,33 +1,17 @@
-install_hook()
-{
-    DIR_SCRIPTS="scripts"
-    PATH_MY_HOOK="$DIR_SCRIPTS/formating_hook.sh"
-    PATH_GIT_HOOK=".git/hooks/pre-commit"
+message(STATUS "ENV{FATAL_ERRORS_FLAG} = '$ENV{FATAL_ERRORS_FLAG}'")
 
-    cp $PATH_MY_HOOK $PATH_GIT_HOOK && chmod +x $PATH_GIT_HOOK
-    chmod +x $PATH_GIT_HOOK
-}
+if(DEFINED ENV{FATAL_ERRORS_FLAG} AND $ENV{FATAL_ERRORS_FLAG} STREQUAL "ON")
+  set(FATAL_ERRORS_FLAG ON CACHE BOOL "Treat warnings as errors" FORCE)
+  message(STATUS "FATAL_ERRORS_FLAG is ON: enabling -Werror")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+else()
+  set(FATAL_ERRORS_FLAG OFF CACHE BOOL "Treat warnings as errors" FORCE)
+  message(STATUS "FATAL_ERRORS_FLAG is OFF or not defined")
+endif()
 
+if(DEFINED ENV{FATAL_ERRORS_FLAG} AND $ENV{FATAL_ERRORS_FLAG} STREQUAL "ON")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfatal-errors")
+endif()
 
-
-
-#!/bin/bash
-
-# FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(c|cpp)$') # Nokia
-FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(c|cpp|h|hpp)$')
-
-if [ -z "$FILES" ]; then
-    echo "Brak plików do formatowania."
-    exit 0
-fi
-
-echo "Formatowanie zmienionych plików za pomocą ClangFormat..."
-for FILE in $FILES; do
-    echo "$FILE"
-    # clang-format -i "$FILE"        # Formatowanie pliku
-    clang-format -i -style=file:"${PWD}/external/CORE_lib/.clang-format" "$FILE"
-    git add "$FILE"                # Ponowne dodanie do stage po formatowaniu
-done
-
-echo "Pliki sformatowane i dodane do commita."
-exit 0
+export FATAL_ERRORS_FLAG=ON
+./production_iht_build.sh marlin "$@"

@@ -8,6 +8,8 @@ BUILD_PRESET="make-release-win64"
 
 # git submodule update --init --recursive
 
+export FATAL_ERRORS_FLAG=ON
+
 cmake --preset "$BUILD_PRESET"
 cmake --build --preset "$BUILD_PRESET" --parallel
 # ctest --test-dir "$BUILD_DIR"
