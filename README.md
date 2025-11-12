@@ -1,10 +1,14 @@
 # CMake Cheat Sheet (`cmake_examples`)
 
-https://cppcheatsheet.com/notes/cmake_basic.html  
+https://cppcheatsheet.com/notes/cmake_basic.html
 https://cppcheatsheet.com/notes/cmake_package.html
 
 - TODO -
 add packing & find_package example
+
+https://www.youtube.com/watch?v=JnuqMEC7p9E
+
+
 
 ## Core Configuration
 
