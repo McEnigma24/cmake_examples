@@ -8,5 +8,11 @@ int main()
 
     line("My Macro");
 
+    int a = 10;
+    int b = 11;
+
+    var(a);
+    var(b);
+
     return 0;
 }

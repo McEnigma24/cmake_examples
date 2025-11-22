@@ -6,8 +6,6 @@ BUILD_DIR=${BUILD_DIR:-build}
 
 BUILD_PRESET="make-debug-test"
 
-git submodule update --init --recursive
-
 export FATAL_ERRORS_FLAG=ON # alternative is to just make another preset to set it but for that small thing I like it this way
 
 cmake --preset "$BUILD_PRESET"
