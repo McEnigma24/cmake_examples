@@ -13,3 +13,6 @@ export FATAL_ERRORS_FLAG=ON
 cmake --preset "$BUILD_PRESET"
 cmake --build --preset "$BUILD_PRESET" --parallel
 # ctest --test-dir "$BUILD_DIR"
+
+# cpack 
+cpack -G TGZ .

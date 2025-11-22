@@ -1,7 +1,12 @@
 # CMake Cheat Sheet (`cmake_examples`)
 
+CMAKE
 https://cppcheatsheet.com/notes/cmake/cmake_basic.html
 https://cppcheatsheet.com/notes/cmake/cmake_package.html
+
+MAKE
+https://cppcheatsheet.com/notes/c/c_make.html
+
 
 
 - TODO -
