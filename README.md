@@ -1,17 +1,20 @@
 # CMake Cheat Sheet (`cmake_examples`)
 
 CMAKE
+ALL          ->  https://cmake.org/cmake/help/book/mastering-cmake/index.html
+STEP BY STEP ->  https://cmake.org/cmake/help/book/mastering-cmake/cmake/Help/guide/tutorial/index.html
+
 https://cppcheatsheet.com/notes/cmake/cmake_basic.html
+
 https://cppcheatsheet.com/notes/cmake/cmake_package.html
+https://www.youtube.com/watch?v=JnuqMEC7p9E
+
+
+
+
 
 MAKE
 https://cppcheatsheet.com/notes/c/c_make.html
-
-
-
-- TODO -
-https://www.youtube.com/watch?v=JnuqMEC7p9E
-add packing & find_package example
 
 
 ## Core Configuration

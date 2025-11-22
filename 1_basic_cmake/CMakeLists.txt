@@ -12,6 +12,6 @@ set(SOURCES
 
 include(C-commands.cmake)
 
-add_executable(${CONST_TARGET_NAME}.exe      ${SOURCES})
-add_library(${CONST_TARGET_NAME}_st STATIC   ${SOURCES})
-add_library(${CONST_TARGET_NAME}_sh SHARED   ${SOURCES})
+add_executable(${CONST_TARGET_NAME}.exe      ${SOURCES})  # exe
+add_library(${CONST_TARGET_NAME}_st STATIC   ${SOURCES})  # static lib
+add_library(${CONST_TARGET_NAME}_sh SHARED   ${SOURCES})  # shared lib

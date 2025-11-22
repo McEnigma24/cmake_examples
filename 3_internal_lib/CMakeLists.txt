@@ -18,4 +18,5 @@ include(C-flags.cmake)
 
 
 add_executable(${CONST_TARGET_NAME} ${SOURCES})
-target_link_libraries(${CONST_TARGET_NAME} PRIVATE internal_lib_math) # teraz ustawiamy, że jeśli ktoś zaincluduje ten target to nie dostanie nic z internal_lib_math
+target_link_libraries(${CONST_TARGET_NAME} PRIVATE internal_lib_math) # teraz ustawiamy, że jeśli ktoś zaincluduje ten target (${CONST_TARGET_NAME} == app_3) 
+                                                                      # to nie dostanie nic z internal_lib_math, bo PRIVATE blokuje przekazywanie dalej do innych targetów

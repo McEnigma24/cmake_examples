@@ -9,7 +9,7 @@ set(CONST_TARGET_NAME "app_7")
 include_directories(_core/_inc)
 aux_source_directory(_core/_src SOURCES)
 
-# find_program(NVIDIA_SMI_EXECUTABLE nvidia-smi)     # aby program był dostępny w systemie
+# find_program(NVIDIA_SMI_EXECUTABLE nvidia-smi)     # check aby program / pakiet był dostępny w systemie
 # find_package(CUDAToolkit REQUIRED)
 # find_package(OpenMP REQUIRED)
 
@@ -33,17 +33,30 @@ install(TARGETS ${CONST_TARGET_NAME}
 # install(FILES _core/_inc/util.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 # CPack settings - must be set before include(CPack)
-# These must be set as normal variables, not CACHE variables
+# Set ALL required CPack variables explicitly
+# CPack requires these to be set as normal variables (not CACHE) before include(CPack)
 set(CPACK_PACKAGE_NAME "${PROJECT_NAME}")
 set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "packed_app_7")
-set(CPACK_GENERATOR "ZIP;TGZ")
-set(CPACK_DEBIAN_PACKAGE_MAINTAINER "crazyguitar")
 set(CPACK_PACKAGE_VENDOR "${PROJECT_NAME}")
+set(CPACK_GENERATOR "TGZ;ZIP")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "crazyguitar")
 
-# Debug: print values to verify they are set
+# CRITICAL: CPack uses CPACK_PROJECT_NAME internally
+# This must be set as a normal variable (not CACHE) before include(CPack)
+set(CPACK_PROJECT_NAME "${PROJECT_NAME}")
+
+# Also set in parent scope to ensure it's available when cpack is run
+set(CPACK_PROJECT_NAME "${PROJECT_NAME}" PARENT_SCOPE)
+
+# Debug: print ALL CPack variables to verify they are set
+message(STATUS "=== CPack Configuration ===")
 message(STATUS "CPACK_PACKAGE_NAME: ${CPACK_PACKAGE_NAME}")
+message(STATUS "CPACK_PACKAGE_VERSION: ${CPACK_PACKAGE_VERSION}")
+message(STATUS "CPACK_PROJECT_NAME: ${CPACK_PROJECT_NAME}")
 message(STATUS "PROJECT_NAME: ${PROJECT_NAME}")
 message(STATUS "PROJECT_VERSION: ${PROJECT_VERSION}")
+message(STATUS "CPACK_GENERATOR: ${CPACK_GENERATOR}")
+message(STATUS "==========================")
 
 include(CPack)
