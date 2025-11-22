@@ -16,4 +16,4 @@ include(C-test.cmake)
 
 add_executable(${CONST_TARGET_NAME} ${SOURCES})
 target_link_libraries(${CONST_TARGET_NAME} PRIVATE ${ALL_LIBRARIES})
-target_compile_definitions(${CONST_TARGET_NAME} PRIVATE MY_MACRO) # dodajemy własne makro
+target_compile_definitions(${CONST_TARGET_NAME} PRIVATE MY_MACRO)

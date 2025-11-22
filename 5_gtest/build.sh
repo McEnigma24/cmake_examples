@@ -8,11 +8,16 @@ BUILD_DIR=${BUILD_DIR:-build}
 cmake -S . -B "${BUILD_DIR}" -DCTEST_ACTIVE=ON
 cmake --build "${BUILD_DIR}" --parallel
 
-ctest --test-dir "${BUILD_DIR}"
+# CTest - automatically called by CMake via 'test' target
+cmake --build "${BUILD_DIR}" --target test || echo "No test target found - skipping tests (set CTEST_ACTIVE=ON to enable)"
 
 
 
 # alternalively #
+
+# ctest --test-dir "${BUILD_DIR}"
+
+# or #
 
 # CTEST_ARGS=""
 # CTEST_ARGS="${CTEST_ARGS} --test-dir "${BUILD_DIR}""

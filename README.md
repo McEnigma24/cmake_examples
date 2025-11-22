@@ -181,7 +181,7 @@ endif()
 - A dedicated toolchain file configures compilers (`find_program` + `set(CMAKE_<LANG>_COMPILER ...)`), executable suffixes, and `CMAKE_FIND_ROOT_PATH` policies.
 - Environment variables (`MINGW_TRIPLET`, `MINGW_PREFIX`) let you customize the toolchain without editing the file.
 
-```1:41:7_toolchain/toolchains/mingw-w64.cmake
+```1:41:7_cmake/toolchains/mingw-w64.cmake
 set(CMAKE_SYSTEM_NAME Windows)
 set(CMAKE_EXECUTABLE_SUFFIX ".exe")
 find_program(MINGW_C_COMPILER "${MINGW_TRIPLET}-gcc" REQUIRED)
