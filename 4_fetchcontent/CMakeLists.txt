@@ -17,6 +17,7 @@ include(C-commands.cmake)
 include(C-flags.cmake)
 
 
+MESSAGE(STATUS "Downloading external libraries...")
 
 # 1 - json #
 include(FetchContent)

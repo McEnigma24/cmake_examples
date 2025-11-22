@@ -4,6 +4,8 @@ set(ALL_LIBRARIES ${ALL_LIBRARIES} internal_lib_math)
 
 
 
+MESSAGE(STATUS "Downloading external libraries...")
+
 # 1 - json #
 include(FetchContent)
 FetchContent_Declare(
@@ -16,3 +18,5 @@ FetchContent_MakeAvailable(json)   # pobiera i buduje ==> Populate + add_subdire
 
 set(ALL_LIBRARIES ${ALL_LIBRARIES} nlohmann_json::nlohmann_json)
 include_directories(${json_SOURCE_DIR}/include/nlohmann)
+
+MESSAGE(STATUS "DONE: ALL_LIBRARIES=${ALL_LIBRARIES}")

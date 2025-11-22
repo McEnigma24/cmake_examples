@@ -5,7 +5,8 @@ BUILD_DIR=${BUILD_DIR:-build}
 rm -rf $BUILD_DIR*/
 
 # BUILD_PRESET="make-release-win64"    # commented out -> this is only for example -> json submodule stop compiling properly
-BUILD_PRESET="ninja-debug-test"
+# BUILD_PRESET="ninja-debug-test"
+BUILD_PRESET="ninja-debug"
 
 export FATAL_ERRORS_FLAG=ON
 

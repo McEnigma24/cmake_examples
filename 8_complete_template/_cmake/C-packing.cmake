@@ -3,7 +3,7 @@ include(GNUInstallDirs)
 
 # Install executable
 install(TARGETS ${CONST_TARGET_NAME}
-  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  RUNTIME DESTINATION bin
   COMPONENT Runtime
 )
 
