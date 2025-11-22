@@ -13,6 +13,7 @@ aux_source_directory(_core/_src SOURCES)
 add_subdirectory(_libs/math)
 set(ALL_LIBRARIES ${ALL_LIBRARIES} internal_lib_math)
 
+include(C-commands.cmake)
 include(C-flags.cmake)
 
 
@@ -44,7 +45,6 @@ FetchContent_MakeAvailable(json)   # pobiera i buduje ==> Populate + add_subdire
             # target_include_directories(ssd1306 PUBLIC ${ssd1306_SOURCE_DIR})
 
             # set(ALL_LIBRARIES ${ALL_LIBRARIES} ssd1306) # dodajemy do glownego EXE
-
 
 
 

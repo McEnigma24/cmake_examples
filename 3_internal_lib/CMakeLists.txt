@@ -12,6 +12,7 @@ aux_source_directory(_core/_src SOURCES)
 # adding all internal libraries
 add_subdirectory(_libs/math)
 
+include(C-commands.cmake)
 include(C-flags.cmake)
 
 

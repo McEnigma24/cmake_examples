@@ -59,7 +59,7 @@
     {
       "name": "ninja-release-win64",
       "inherits": "ninja-release",
-      "binaryDir": "build-win",
+      "binaryDir": "build-win-ninja",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
         "CMAKE_TOOLCHAIN_FILE": "toolchains/mingw-w64.cmake"

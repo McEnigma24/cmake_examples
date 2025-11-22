@@ -12,6 +12,8 @@ include_directories(_core/_inc)
 # adding all sources
 aux_source_directory(_core/_src SOURCES)
 
+include(C-commands.cmake)
+
 string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
 add_definitions(-DSOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})
 

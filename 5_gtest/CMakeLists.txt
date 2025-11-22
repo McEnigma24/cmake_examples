@@ -9,6 +9,7 @@ set(CONST_TARGET_NAME "app_5")
 include_directories(_core/_inc)
 aux_source_directory(_core/_src SOURCES)
 
+include(C-commands.cmake)
 include(C-flags.cmake)
 include(C-libs.cmake)
 

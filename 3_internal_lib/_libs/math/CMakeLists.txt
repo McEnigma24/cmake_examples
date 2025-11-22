@@ -30,5 +30,8 @@ target_include_directories(${CONST_TARGET_NAME}
 
     # PRIVATE   # -> nic nie propagujey do konsumentów
 
+
+    # dzięki labelkom PUBLIC / INTERFACE / PRIVATE można konkretnie wybierać jakie pliki udostępniamy wyżej a jakie nie
+
     ${CMAKE_CURRENT_SOURCE_DIR}/_core/_inc
 )

@@ -10,6 +10,7 @@ set(SOURCES
     _core/_src/main.cpp
 )
 
+include(C-commands.cmake)
 
 add_executable(${CONST_TARGET_NAME}.exe      ${SOURCES})
 add_library(${CONST_TARGET_NAME}_st STATIC   ${SOURCES})
