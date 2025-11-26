@@ -21,3 +21,6 @@ target_link_libraries(${CONST_TARGET_NAME} PRIVATE ${ALL_LIBRARIES})
 target_compile_definitions(${CONST_TARGET_NAME} PRIVATE ${MACRO_LIST})
 
 include(_cmake/C-packing.cmake)
+
+
+# get_filename_component(FIRMWARE_DIR "${CMAKE_CURRENT_LIST_DIR}/../firmware" ABSOLUTE)

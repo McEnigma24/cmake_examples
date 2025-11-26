@@ -107,5 +107,22 @@
       "configurePreset": "make-release-win64"
     }
   ]
+  // ,
+  //   "testPresets": [
+  //       {
+  //           "name": "unit",
+  //           "displayName": "Run unit tests",
+  //           "configurePreset": "default",
+  //           "buildPreset": "ninja-debug",
+  //           "ctestArgs": ["-V", "-R", "unit_.*"]
+  //       },
+  //       {
+  //           "name": "integration",
+  //           "displayName": "Run integration tests",
+  //           "configurePreset": "default",
+  //           "buildPreset": "ninja-debug",
+  //           "ctestArgs": ["-V", "-R", "integration_.*"]
+  //       }
+  //   ]
 }
 

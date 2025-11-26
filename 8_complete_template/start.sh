@@ -14,3 +14,9 @@ cmake --preset "$BUILD_PRESET"
 cmake --build --preset "$BUILD_PRESET" --parallel
 cmake --build --preset "$BUILD_PRESET" --target test || echo "No test target found - skipping tests (set CTEST_ACTIVE=ON to enable)"
 cmake --build --preset "$BUILD_PRESET" --target package
+
+
+# po zdefiniowaniu "testPresets" można tego używać #
+
+# cmake --test --preset "$BUILD_PRESET"
+
